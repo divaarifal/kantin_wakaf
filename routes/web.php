@@ -2,14 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin As Admin;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\AuthController as UserAuthController;
 
+// Auth Routes (User)
+Route::get('register', [UserAuthController::class, 'showRegisterForm'])->name('register');
+Route::post('register', [UserAuthController::class, 'register']);
+Route::get('login', [UserAuthController::class, 'showLoginForm'])->name('login');
+Route::post('login', [UserAuthController::class, 'login']);
+Route::post('logout', [UserAuthController::class, 'logout'])->name('logout');
+
+// Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/menu', [MenuController::class, 'index'])->name('menu.index');
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
@@ -27,10 +36,17 @@ Route::get('/contact', function() {
     return view('contact', compact('content'));
 })->name('contact');
 
+// Authenticated Routes
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/scan-qr', [App\Http\Controllers\ProfileController::class, 'scanQr'])->name('scan.qr'); // Simulation Endpoint
+});
+
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
-    Route::post('login', [AuthController::class, 'login']);
-    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('login', [AdminAuthController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [AdminAuthController::class, 'login']);
+    Route::post('logout', [AdminAuthController::class, 'logout'])->name('logout');
 
     Route::middleware('auth')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');

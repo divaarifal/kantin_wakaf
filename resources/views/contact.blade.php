@@ -4,85 +4,97 @@
 
 @section('content')
 <div class="container py-5">
-    <div class="text-center mb-5">
+    <div class="text-center mb-5 fade-in">
         <h1 class="fw-bold text-success">Get in Touch</h1>
         <p class="text-muted">Have questions or suggestions? We'd love to hear from you!</p>
     </div>
 
-    <div class="row justify-content-center">
-        <div class="col-md-5 mb-4 mb-md-0">
-            <div class="card border-0 shadow-sm h-100">
-                <div class="card-body p-4">
-                    <h4 class="mb-4">Contact Information</h4>
+    <div class="row g-5">
+        <!-- Contact Info Column -->
+        <div class="col-lg-5 mb-4 mb-lg-0 fade-in">
+            <div class="card border-0 shadow-lg rounded-4 h-100 bg-success text-white">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="fw-bold mb-4 text-white">Contact Information</h3>
+                    <p class="mb-5 text-white-50">Fill up the form and our team will get back to you within 24 hours.</p>
                     
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="bg-success text-white rounded-circle p-2 me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                            <i class="bi bi-whatsapp"></i>
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-white bg-opacity-25 rounded-circle p-3 me-3">
+                            <i class="bi bi-telephone-fill fs-4 text-white"></i>
                         </div>
                         <div>
-                            <p class="mb-0 fw-bold">WhatsApp</p>
-                            <p class="mb-0 text-muted">+62 812-3456-7890</p>
+                            <div class="small text-uppercase text-white-50 fw-bold">Phone / WhatsApp</div>
+                            <div class="fs-5">{{ $content['info_whatsapp']->content ?? '+62 812-3456-7890' }}</div>
                         </div>
                     </div>
 
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="bg-warning text-dark rounded-circle p-2 me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                            <i class="bi bi-instagram"></i>
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-white bg-opacity-25 rounded-circle p-3 me-3">
+                            <i class="bi bi-instagram fs-4 text-white"></i>
                         </div>
                         <div>
-                            <p class="mb-0 fw-bold">Instagram</p>
-                            <p class="mb-0 text-muted">@kantinwakaf</p>
+                            <div class="small text-uppercase text-white-50 fw-bold">Instagram</div>
+                            <div class="fs-5">{{ $content['info_instagram']->content ?? '@kantinwakaf' }}</div>
                         </div>
                     </div>
 
-                    <div class="d-flex align-items-center mb-3">
-        <div class="col-md-6 mb-4">
-            <div class="p-4 bg-light rounded-4 h-100 shadow-sm hover-cards">
-                <i class="bi bi-geo-alt-fill text-success fs-2 mb-3"></i>
-                <h4 class="fw-bold">Our Location</h4>
-                <p class="text-muted">{{ $content['info_address']->content ?? 'Jl. Sejahtera No. 123, Jakarta Selatan, Indonesia' }}</p>
-            </div>
-        </div>
-        <div class="col-md-6 mb-4">
-            <div class="p-4 bg-light rounded-4 h-100 shadow-sm hover-cards">
-                <i class="bi bi-whatsapp text-success fs-2 mb-3"></i>
-                <h4 class="fw-bold">WhatsApp</h4>
-                <p class="text-muted">{{ $content['info_whatsapp']->content ?? '+62 812-3456-7890' }}</p>
-            </div>
-        </div>
-        <div class="col-md-6 mb-4">
-            <div class="p-4 bg-light rounded-4 h-100 shadow-sm hover-cards">
-                <i class="bi bi-instagram text-danger fs-2 mb-3"></i>
-                <h4 class="fw-bold">Instagram</h4>
-                <p class="text-muted">{{ $content['info_instagram']->content ?? '@kantinwakaf' }}</p>
-            </div>
-        </div>
-        <div class="col-md-6 mb-4">
-            <div class="p-4 bg-light rounded-4 h-100 shadow-sm hover-cards">
-                <i class="bi bi-envelope-fill text-primary fs-2 mb-3"></i>
-                <h4 class="fw-bold">Email Us</h4>
-                <p class="text-muted">{{ $content['info_email']->content ?? 'info@kantinwakaf.com' }}</p>
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-white bg-opacity-25 rounded-circle p-3 me-3">
+                            <i class="bi bi-envelope-fill fs-4 text-white"></i>
+                        </div>
+                        <div>
+                            <div class="small text-uppercase text-white-50 fw-bold">Email Address</div>
+                            <div class="fs-5">{{ $content['info_email']->content ?? 'info@kantinwakaf.com' }}</div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-white bg-opacity-25 rounded-circle p-3 me-3">
+                            <i class="bi bi-geo-alt-fill fs-4 text-white"></i>
+                        </div>
+                        <div>
+                            <div class="small text-uppercase text-white-50 fw-bold">Location</div>
+                            <div class="fs-5">{{ $content['info_address']->content ?? 'Jl. Sejahtera No. 123, Jakarta' }}</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto pt-4">
+                        <div class="d-flex gap-3">
+                            <a href="#" class="btn btn-outline-light rounded-circle"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="btn btn-outline-light rounded-circle"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="btn btn-outline-light rounded-circle"><i class="bi bi-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="col-md-6">
-            <div class="card border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <h4 class="mb-4">Send us a Message</h4>
+        <!-- Form Column -->
+        <div class="col-lg-7 fade-in" style="animation-delay: 0.2s;">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body p-4 p-md-5">
+                    <h3 class="fw-bold text-success mb-4">Send us a Message</h3>
                     <form>
-                        <div class="mb-3">
-                            <label class="form-label">Your Name</label>
-                            <input type="text" class="form-control" placeholder="John Doe">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold small text-muted">YOUR NAME</label>
+                                <input type="text" class="form-control form-control-lg bg-light border-0" placeholder="John Doe">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold small text-muted">EMAIL ADDRESS</label>
+                                <input type="email" class="form-control form-control-lg bg-light border-0" placeholder="john@example.com">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-bold small text-muted">SUBJECT</label>
+                                <input type="text" class="form-control form-control-lg bg-light border-0" placeholder="Question regarding menu...">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-bold small text-muted">MESSAGE</label>
+                                <textarea class="form-control form-control-lg bg-light border-0" rows="5" placeholder="Write your message here..."></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-warning btn-lg px-5 rounded-pill fw-bold w-100 hover-scale">Send Message <i class="bi bi-send-fill ms-2"></i></button>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Email Address</label>
-                            <input type="email" class="form-control" placeholder="john@example.com">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Message</label>
-                            <textarea class="form-control" rows="4" placeholder="Your message here..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-success w-100">Send Message</button>
                     </form>
                 </div>
             </div>
