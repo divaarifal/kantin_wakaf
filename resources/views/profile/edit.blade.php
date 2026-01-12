@@ -9,8 +9,14 @@
         <div class="col-md-4 mb-4">
             <div class="card shadow border-0 rounded-4 mb-4 bg-success text-white">
                 <div class="card-body p-4 text-center">
-                    <div class="bg-white text-success rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem;">
-                        {{ substr($user->username, 0, 1) }}
+                    <div class="d-flex justify-content-center mb-3">
+                        @if($user->avatar)
+                            <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar" class="rounded-circle object-fit-cover shadow-sm bg-white" style="width: 80px; height: 80px; border: 3px solid rgba(255,255,255,0.5);">
+                        @else
+                            <div class="bg-white text-success rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 80px; height: 80px; font-size: 2rem;">
+                                {{ substr($user->username, 0, 1) }}
+                            </div>
+                        @endif
                     </div>
                     <h4 class="fw-bold">{{ $user->username }}</h4>
                     <p class="mb-0 text-white-50">{{ $user->email }}</p>
@@ -108,13 +114,31 @@
 
                         <!-- Settings Tab -->
                         <div class="tab-pane fade" id="settings" role="tabpanel">
-                            <form action="{{ route('profile.update') }}" method="POST">
+                            <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
+
+                                <!-- Profile Picture Upload -->
+                                <div class="text-center mb-5">
+                                    <div class="position-relative d-inline-block">
+                                        @if($user->avatar)
+                                            <img src="{{ asset('storage/' . $user->avatar) }}" alt="Avatar" class="rounded-circle object-fit-cover shadow-sm" style="width: 150px; height: 150px; border: 4px solid var(--light-bg);">
+                                        @else
+                                            <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 150px; height: 150px; border: 4px solid var(--light-bg); font-size: 3rem;">
+                                                {{ substr($user->username, 0, 1) }}
+                                            </div>
+                                        @endif
+                                        <label for="avatar_upload" class="position-absolute bottom-0 end-0 bg-white shadow-sm rounded-circle p-2 cursor-pointer hover-scale" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd;">
+                                            <i class="bi bi-pencil-fill text-dark small"></i>
+                                        </label>
+                                        <input type="file" name="avatar" id="avatar_upload" class="d-none" onchange="previewAvatar(this)">
+                                    </div>
+                                    <p class="text-muted small mt-2">Click pen icon to change photo</p>
+                                </div>
                                 
                                 <div class="mb-3">
-                                    <label class="form-label">Username (Cannot be changed)</label>
-                                    <input type="text" class="form-control bg-light" value="{{ $user->username }}" readonly>
+                                    <label class="form-label">Username</label>
+                                    <input type="text" name="username" class="form-control" value="{{ $user->username }}" required>
                                 </div>
 
                                 <div class="mb-3">
@@ -147,7 +171,7 @@
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn btn-success rounded-pill px-5 fw-bold">Save Changes</button>
+                                <button type="submit" class="btn btn-success rounded-pill px-5 fw-bold hover-fluid w-100 w-md-auto">Save Changes</button>
                             </form>
                         </div>
                     </div>

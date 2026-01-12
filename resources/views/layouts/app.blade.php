@@ -51,6 +51,19 @@
         /* Custom Animations */
         .fade-in { animation: fadeIn 0.8s ease-in; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .cursor-pointer { cursor: pointer; }
+        .hover-scale { transition: transform 0.2s; }
+        .hover-scale:hover { transform: scale(1.05); }
+        
+        .hover-fluid { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+        .hover-fluid:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Apply to all buttons and nav items for fluid feel */
+        .btn, .nav-link { transition: all 0.2s; }
+        .btn:hover { transform: translateY(-1px); }
     </style>
     @stack('styles')
 </head>
@@ -75,8 +88,15 @@
                         </li>
                     @else
                         <li class="nav-item dropdown ms-lg-2 mt-2 mt-lg-0">
-                            <a class="nav-link dropdown-toggle btn btn-outline-success px-4 rounded-pill" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Hi, {{ Auth::user()->username }}
+                            <a class="nav-link dropdown-toggle btn btn-outline-success px-3 ps-2 py-1 rounded-pill d-flex align-items-center hover-fluid" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                @if(Auth::user()->avatar)
+                                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}" class="rounded-circle object-fit-cover me-2" style="width: 30px; height: 30px; border: 1px solid #ddd;">
+                                @else
+                                    <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 30px; height: 30px; font-size: 0.8rem;">
+                                        {{ substr(Auth::user()->username, 0, 1) }}
+                                    </div>
+                                @endif
+                                <span class="fw-bold pe-2">{{ Auth::user()->username }}</span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow border-0 rounded-4 mt-2">
                                 <li class="px-3 py-2 border-bottom bg-light rounded-top-4">

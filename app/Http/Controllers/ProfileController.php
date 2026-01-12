@@ -29,13 +29,22 @@ class ProfileController extends Controller
         $user = Auth::user();
         
         $request->validate([
+            'username' => 'required|string|max:255|unique:users,username,' . $user->id,
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'avatar' => 'nullable|image|max:2048', // 2MB Max
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 
+        $user->username = $request->username;
         $user->name = $request->name;
         $user->email = $request->email;
+
+        // Handle Avatar Upload
+        if ($request->hasFile('avatar')) {
+            $path = $request->file('avatar')->store('avatars', 'public');
+            $user->avatar = $path;
+        }
 
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
