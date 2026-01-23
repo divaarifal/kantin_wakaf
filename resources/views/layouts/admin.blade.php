@@ -6,31 +6,62 @@
     <title>Kantin Wakaf Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-green: #064E3B;
+            --accent-green: #10B981;
+            --dark-sidebar: #1F2937; /* Gray-900 */
+            --light-bg: #F3F4F6;     /* Gray-100 */
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--light-bg);
+        }
         .sidebar {
             min-height: 100vh;
-            background-color: #212529;
+            background-color: var(--dark-sidebar);
             color: white;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.1);
         }
         .nav-link {
-            color: rgba(255,255,255,0.8);
-            padding: 10px 20px;
+            color: rgba(255,255,255,0.7);
+            padding: 12px 20px;
+            margin-bottom: 5px;
+            border-radius: 10px;
+            transition: all 0.3s;
         }
         .nav-link:hover, .nav-link.active {
             color: #fff;
-            background-color: #198754;
+            background: linear-gradient(90deg, var(--accent-green), var(--primary-green));
+            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+            transform: translateX(5px);
         }
         .nav-link i {
-            margin-right: 10px;
+            margin-right: 12px;
+            font-size: 1.1rem;
+        }
+        .btn-logout {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            transition: all 0.3s;
+        }
+        .btn-logout:hover {
+            background: #ef4444;
+            border-color: #ef4444;
         }
     </style>
 </head>
 <body>
     <div class="d-flex">
         <!-- Sidebar -->
-        <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white" style="width: 250px;">
-            <a href="{{ route('admin.dashboard') }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <span class="fs-4">Kantin Admin</span>
+        <div class="sidebar d-flex flex-column flex-shrink-0 p-4 text-white" style="width: 280px;">
+            <a href="{{ route('admin.dashboard') }}" class="d-flex align-items-center mb-4 me-md-auto text-white text-decoration-none">
+                <div class="bg-warning text-dark rounded-circle d-flex align-items-center justify-content-center me-3 shadow" style="width: 40px; height: 40px;">
+                    <i class="bi bi-shield-lock-fill fs-5"></i>
+                </div>
+                <span class="fs-4 fw-bold tracking-tight">Kantin Admin</span>
             </a>
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">

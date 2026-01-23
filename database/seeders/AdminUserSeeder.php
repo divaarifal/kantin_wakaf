@@ -16,7 +16,10 @@ class AdminUserSeeder extends Seeder
         User::create([
             'name' => 'Admin Kantin',
             'email' => 'evolve@gmail.com',
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make('12345678'), // Sesuaikan password
+            // TAMBAHKAN BARIS INI:
+            'username' => 'admin_evolve', // Bebas mau diisi apa
+            'role' => 'admin', // Pastikan role juga ada jika diperlukan
         ]);
     }
 }

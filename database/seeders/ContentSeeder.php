@@ -18,6 +18,31 @@ class ContentSeeder extends Seeder
         Content::create(['page' => 'home', 'section' => 'intro', 'key' => 'description', 'content' => 'Kantin Wakaf provides a variety of healthy and tasty meals prepared with high hygiene standards.', 'type' => 'textarea']);
         Content::create(['page' => 'home', 'section' => 'intro', 'key' => 'image', 'content' => 'https://placehold.co/600x400?text=About+Us', 'type' => 'image']);
 
+        // New Promo Sections (v1.4.0)
+        // Promo 1
+        Content::create(['page' => 'home', 'section' => 'promo_1', 'key' => 'title', 'content' => 'Signature Wakaf Bowl', 'type' => 'text']);
+        Content::create(['page' => 'home', 'section' => 'promo_1', 'key' => 'description', 'content' => 'Experience the perfect blend of nutrition and taste with our signature bowl.', 'type' => 'textarea']);
+        Content::create(['page' => 'home', 'section' => 'promo_1', 'key' => 'image', 'content' => 'https://placehold.co/800x600?text=Signature+Bowl', 'type' => 'image']);
+
+        // Promo 2
+        Content::create(['page' => 'home', 'section' => 'promo_2', 'key' => 'title', 'content' => 'Prioritize Your Health', 'type' => 'text']);
+        Content::create(['page' => 'home', 'section' => 'promo_2', 'key' => 'description', 'content' => 'Fresh ingredients, zero preservatives. Eat cleaner, live better.', 'type' => 'textarea']);
+        Content::create(['page' => 'home', 'section' => 'promo_2', 'key' => 'image', 'content' => 'https://placehold.co/800x600?text=Healthy+Food', 'type' => 'image']);
+
+        // Promo 3
+        Content::create(['page' => 'home', 'section' => 'promo_3', 'key' => 'title', 'content' => 'Student Wallet Friendly', 'type' => 'text']);
+        Content::create(['page' => 'home', 'section' => 'promo_3', 'key' => 'description', 'content' => 'Get premium quality meals at prices that fit your student budget.', 'type' => 'textarea']);
+        Content::create(['page' => 'home', 'section' => 'promo_3', 'key' => 'image', 'content' => 'https://placehold.co/800x600?text=Student+Promo', 'type' => 'image']);
+
+        // Promo 4
+        Content::create(['page' => 'home', 'section' => 'promo_4', 'key' => 'title', 'content' => 'Tech & Coffee Events', 'type' => 'text']);
+        Content::create(['page' => 'home', 'section' => 'promo_4', 'key' => 'description', 'content' => 'Join our weekly community gatherings and share your ideas.', 'type' => 'textarea']);
+        Content::create(['page' => 'home', 'section' => 'promo_4', 'key' => 'image', 'content' => 'https://placehold.co/800x600?text=Community', 'type' => 'image']);
+
+        Content::create(['page' => 'home', 'section' => 'hours', 'key' => 'mon_fri', 'content' => '08:00 AM - 04:00 PM', 'type' => 'text']);
+        Content::create(['page' => 'home', 'section' => 'hours', 'key' => 'saturday', 'content' => '08:00 AM - 02:00 PM', 'type' => 'text']);
+        Content::create(['page' => 'home', 'section' => 'hours', 'key' => 'sunday', 'content' => 'Closed', 'type' => 'text']);
+
         // About Page
         Content::create(['page' => 'about', 'section' => 'main', 'key' => 'title', 'content' => 'About Kantin Wakaf', 'type' => 'text']);
         Content::create(['page' => 'about', 'section' => 'main', 'key' => 'description', 'content' => 'A modern canteen dedicated to serving healthy, affordable, and delicious meals.', 'type' => 'textarea']);
