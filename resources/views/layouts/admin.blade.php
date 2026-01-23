@@ -80,6 +80,12 @@
                         <i class="bi bi-images"></i> Gallery
                     </a>
                 </li>
+
+                <li>
+                    <a href="{{ route('admin.users.index') }}" class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
+                        <i class="bi bi-people"></i> Customers
+                    </a>
+                </li>
                 
                 <li class="nav-header text-uppercase text-white-50 fs-7 mt-3 mb-1 ms-3">Pages</li>
                 <li>

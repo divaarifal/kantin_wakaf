@@ -56,5 +56,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // CMS Routes
         Route::get('pages/{page}', [Admin\PageController::class, 'index'])->name('pages.edit');
         Route::put('pages/{page}', [Admin\PageController::class, 'update'])->name('pages.update');
+
+        // User Management
+        Route::resource('users', Admin\UserController::class)->only(['index', 'destroy']);
     });
 });
